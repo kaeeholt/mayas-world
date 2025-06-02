@@ -1,11 +1,11 @@
-<!-- FULL AVATAR HUD WITH LOADING + ENTRY SCREEN -->
+<!-- FULL AVATAR HUD WITH LOADING + ENTRY SCREEN + REDIRECT TO SIM.HTML -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enter the Sim | Maya's World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap&family=Barlow:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
@@ -16,7 +16,7 @@
       color: white;
       font-family: 'Pacifico', cursive;
     }
-    .entry-screen, .sim-screen {
+    .entry-screen, .loading-screen {
       display: none;
       align-items: center;
       justify-content: center;
@@ -25,7 +25,7 @@
       background: linear-gradient(to bottom, #ff1493, #000);
       text-align: center;
     }
-    .entry-screen.active, .sim-screen.active {
+    .entry-screen.active, .loading-screen.active {
       display: flex;
     }
     .entry-button {
@@ -58,8 +58,7 @@
       document.querySelector('.entry-screen').classList.remove('active');
       document.querySelector('.loading-screen').classList.add('active');
       setTimeout(() => {
-        document.querySelector('.loading-screen').classList.remove('active');
-        document.querySelector('.sim-screen').classList.add('active');
+        window.location.href = 'sim.html';
       }, 3000);
     }
   </script>
@@ -73,14 +72,9 @@
   </div>
 
   <!-- Loading Screen -->
-  <div class="loading-screen entry-screen">
+  <div class="loading-screen">
     <div class="loader"></div>
     <h2>Loading Maya's World...</h2>
-  </div>
-
-  <!-- Main Sim Screen (to be injected below manually or via iframe in next step) -->
-  <div class="sim-screen">
-    <iframe src="sim.html" width="100%" height="100%" frameborder="0" onerror="this.parentNode.innerHTML='<h2 style=\"color:white;text-align:center;\">⚠️ sim.html not found. Please upload it to your repo.</h2>'"></iframe>
   </div>
 </body>
 </html>
